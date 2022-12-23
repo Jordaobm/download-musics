@@ -1,6 +1,6 @@
 # Download de músicas
 
-Destinado ao uso pessoal apenas para download de músicas diretamente do YouTube, o código foi desenvolvido em Python utilizando uma biblioteca famose **pytube** e **typer**. **pytube** foi utilizado para realizar o download dos arquivos e **typer** foi utilizado para executar o comando fornecido. 
+Destinado ao uso pessoal apenas para download de músicas diretamente do YouTube, o código foi desenvolvido em Python utilizando **pytube** e **typer**. **pytube** foi utilizado para realizar o download dos arquivos e **typer** foi utilizado para executar o comando fornecido. 
 
 Para baixar as músicas primeiro clone o repositório usando:
 
