@@ -2,18 +2,17 @@ from pytube import YouTube
 from typer import Typer
 import os
 
-
 app = Typer()
 
 
 @app.command()
-def download_360p_mp4_videos():
+def download_musics():
     with open("musics.txt") as file:
         for line in file:
-            yt = YouTube(line)
-            video = yt.streams.filter(only_audio=True).first()
+            youtube = YouTube(line)
+            music = youtube.streams.filter(only_audio=True).first()
 
-            out_file = video.download(output_path='./outputs/')
+            out_file = music.download(output_path='./outputs/')
 
             base, ext = os.path.splitext(out_file)
             new_file = base + '.mp3'
