@@ -1,18 +1,32 @@
 # Download de músicas
 
-Destinado ao uso pessoal apenas para download de músicas diretamente do YouTube, o código foi desenvolvido em Python utilizando **pytube** e **typer**. **pytube** foi utilizado para realizar o download dos arquivos e **typer** foi utilizado para executar o comando fornecido. 
+Destinado ao uso pessoal apenas para download de músicas diretamente do YouTube, o código foi desenvolvido em Python utilizando **pytube** e **typer**. **pytube** foi utilizado para realizar o download dos arquivos e **typer** foi utilizado para executar o comando fornecido.
 
-Para baixar as músicas primeiro clone o repositório usando:
+## Como usar
 
-    git clone https://github.com/Jordaobm/download-musics.git
-    cd download-musics
+1. Clone o repositório:
 
+   ```bash
+   git clone https://github.com/Jordaobm/download-musics.git
+   cd download-musics
+   ```
 
-Em seguida, instale o [Python](https://www.python.org/downloads/) em sua máquina caso não tenha.
-Agora, basta preencher o arquivo **musics.txt** com os links que você deseja baixar, colocando cada um em uma linha.
+2. Certifique-se de ter o Python instalado no seu computador.
 
-Execute o comando abaixo em um terminal partindo de dentro do repositório e aguarde;
+3. Abra um terminal PowerShell na raiz do projeto e execute os seguintes comandos:
 
-    python get-yt.py
+   ```bash
+   # Cria o ambiente virtual do Python
+   python -m venv venv
 
-Suas músicas serão baixadas dentro de ./outputs/
+   # Ativa o ambiente virtual do Python
+   venv\Scripts\activate
+
+   # Instala as dependências do projeto
+   pip install -r .\requirements.txt
+
+   # Executa o código, baixando as músicas presentes dentro de musics.txt
+   python .\get-yt.py
+   ```
+
+Suas músicas serão baixadas dentro de `./outputs/`.
