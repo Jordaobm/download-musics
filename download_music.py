@@ -7,7 +7,7 @@ app = Typer()
 
 @app.command()
 def download_musics():
-    with open("musics.txt") as file:
+    with open("download_music.txt") as file:
         for line in file:
             youtube = YouTube(line)
             music = youtube.streams.filter(only_audio=True).first()
@@ -15,7 +15,7 @@ def download_musics():
             out_file = music.download(output_path='./outputs/')
 
             base, ext = os.path.splitext(out_file)
-            new_file = base + '.mp3'
+            new_file = base + '.mp4'
             os.rename(out_file, new_file)
 
 
