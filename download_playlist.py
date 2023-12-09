@@ -1,7 +1,7 @@
-import os
-
 from pytube import Playlist, YouTube
 from typer import Typer
+import os
+from moviepy.editor import AudioFileClip
 
 app = Typer()
 
@@ -18,6 +18,11 @@ def get_playlist():
             
 
 
+def convert_to_mp3(input_file, output_file):
+    audio = AudioFileClip(input_file)
+    audio.write_audiofile(output_file)
+    audio.close()
+
 
 def download_musics(url, name):
     youtube = YouTube(url)
@@ -27,8 +32,13 @@ def download_musics(url, name):
 
     base, ext = os.path.splitext(out_file)
     new_file = base + '.mp3'
-    os.rename(out_file, new_file)
-            
+
+
+
+    convert_to_mp3(out_file, new_file)
+
+    os.remove(out_file)  # Remove o arquivo webm original se desejar economizar espaço
+          
 
 
 
