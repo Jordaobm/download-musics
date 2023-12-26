@@ -1,0 +1,1 @@
+PowerShell -ExecutionPolicy Bypass -File .\download_playlist.ps1
