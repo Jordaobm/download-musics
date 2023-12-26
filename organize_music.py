@@ -2,7 +2,7 @@ import os
 import re
 
 def organize_music():
-    deleting_names = ['GTA V Radio [Channel X]', 'GTA V - Rebel Radio', 'GTA V Radio [FLyLo FM]', 'GTA V [Radio Mirror Park]']
+    deleting_names = ['GTA V Radio [Channel X]', 'GTA V - Rebel Radio', 'GTA V Radio [FLyLo FM]', 'GTA V [Radio Mirror Park]', 'GTA V [Los Santos Rock Radio]', 'Rebel Radio', 'Flying Lotus']
 
     for root, dirs, files in os.walk('outputs'):
         # Ordenar os arquivos para garantir a ordem correta
@@ -18,6 +18,12 @@ def organize_music():
             new_name = file
             for name in deleting_names:
                 new_name = new_name.replace(name, '')
+
+            # Remover espaços em branco no início e no final do nome
+            new_name = new_name.strip()
+
+            # Ajustar espaços em branco entre a ordem e o nome
+            new_name = re.sub(r'(?<=\d)\s+', ' ', new_name)
 
             # Verificar se a numeração já está presente
             existing_order_match = re.search(r'^\d+\.\d+', new_name)
