@@ -10,9 +10,10 @@ def get_file_pattern(num_files):
         return "{:d}"
 
 def organize_files():
-    deleting_names = ['GTA V Radio [Channel X]', 'GTA V - Rebel Radio', 'GTA V Radio [FLyLo FM]', 'GTA V [Radio Mirror Park]', 'GTA V [Los Santos Rock Radio]', 'Rebel Radio', 'Flying Lotus', 'GTA 5 - ', 'GTA 5', '- GTA 5 ', 'GTA_San_Andreas__KDST', 'GTA San Andreas - K-DST', 'Krose_Playlist.ATB - ', 'Krose_Playlist.', 'Krose_Playlist', 'GTA SA K-Rose - - ', 'K-Rose ', 'K-Rose', 'KRose']
+    script_directory = os.path.dirname(os.path.abspath(__file__))
+    outputs_path = os.path.join(script_directory, '..', '..', 'outputs')
 
-    for root, dirs, files in os.walk('outputs'):
+    for root, dirs, files in os.walk(outputs_path):
         # Ordenar os arquivos para garantir a ordem correta
         files.sort()
 
@@ -24,11 +25,6 @@ def organize_files():
 
         for file_index, file in enumerate(files, start=1):
             old_path = os.path.join(root, file)
-
-            # Remover palavras-chave do nome do arquivo
-            new_name = file
-            for name in deleting_names:
-                new_name = new_name.replace(name, '')
 
             # Remover espaços em branco no início e no final do nome
             new_name = new_name.strip()

@@ -2,7 +2,16 @@ import os
 import re
 
 def remove_organize_files():
-    for root, dirs, files in os.walk('outputs'):
+
+    count = 0
+
+    script_directory = os.path.dirname(os.path.abspath(__file__))
+    outputs_path = os.path.join(script_directory, '..', '..', 'outputs')
+
+    
+    for root, dirs, files in os.walk(outputs_path):
+        count = count + len(files) 
+
         for file in files:
             old_path = os.path.join(root, file)
 
@@ -18,6 +27,8 @@ def remove_organize_files():
             # Renomear o arquivo
             new_path = os.path.join(root, new_name)
             os.rename(old_path, new_path)
+
+    print(count)
 
 if __name__ == "__main__":
     remove_organize_files()

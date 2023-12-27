@@ -1,7 +1,9 @@
 import os
 
 def organize_folders():
-    outputs_path = 'outputs'
+    script_directory = os.path.dirname(os.path.abspath(__file__))
+    outputs_path = os.path.join(script_directory, '..', '..', 'outputs')
+
 
     # Listar todas as pastas em ordem alfabética
     folders = sorted(os.listdir(outputs_path))
