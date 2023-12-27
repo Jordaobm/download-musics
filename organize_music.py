@@ -1,6 +1,14 @@
 import os
 import re
 
+def get_file_pattern(num_files):
+    if num_files > 99:
+        return "{:03d}"
+    elif num_files > 9:
+        return "{:02d}"
+    else:
+        return "{:d}"
+
 def organize_music():
     deleting_names = ['GTA V Radio [Channel X]', 'GTA V - Rebel Radio', 'GTA V Radio [FLyLo FM]', 'GTA V [Radio Mirror Park]', 'GTA V [Los Santos Rock Radio]', 'Rebel Radio', 'Flying Lotus', 'GTA 5 - ', 'GTA 5', '- GTA 5 ', 'GTA_San_Andreas__KDST', 'GTA San Andreas - K-DST', 'Krose_Playlist.ATB - ', 'Krose_Playlist.', 'Krose_Playlist', 'GTA SA K-Rose - - ', 'K-Rose ', 'K-Rose', 'KRose']
 
@@ -10,6 +18,9 @@ def organize_music():
 
         folder_name = os.path.basename(root)
         order_number = folder_name.split('.')[0]
+
+        # Obter o padrão de numeração com base no número de arquivos na pasta
+        file_pattern = get_file_pattern(len(files))
 
         for file_index, file in enumerate(files, start=1):
             old_path = os.path.join(root, file)
@@ -30,8 +41,8 @@ def organize_music():
             if existing_order_match:
                 new_name = re.sub(r'^\d+\.\d+', f"{order_number}.{existing_order_match.group(0).split('.')[1]}", new_name)
             else:
-                # Adicionar ordem nas músicas
-                new_name = f"{order_number}.{file_index} {new_name}"
+                # Adicionar ordem nas músicas utilizando o padrão dinâmico
+                new_name = f"{order_number}.{file_pattern.format(file_index)} {new_name}"
 
             # Renomear o arquivo
             new_path = os.path.join(root, new_name)
