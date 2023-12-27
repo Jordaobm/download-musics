@@ -1,7 +1,7 @@
 import os
 import re
 
-def remove_order_from_files():
+def remove_organize_files():
     for root, dirs, files in os.walk('outputs'):
         for file in files:
             old_path = os.path.join(root, file)
@@ -20,4 +20,4 @@ def remove_order_from_files():
             os.rename(old_path, new_path)
 
 if __name__ == "__main__":
-    remove_order_from_files()
+    remove_organize_files()
