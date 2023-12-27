@@ -29,19 +29,23 @@ def convert_to_mp3(input_file, output_file):
     audio.write_audiofile(output_file)
     audio.close()
 
-
 def download_musics(url, name):
-    youtube = YouTube(url)
-    music = youtube.streams.filter(only_audio=True).first()
+    try:
+        youtube = YouTube(url)
+        music = youtube.streams.filter(only_audio=True).first()
 
-    out_file = music.download(output_path=f'./outputs/{name}')
+        out_file = music.download(output_path=f'./outputs/{name}')
 
-    base, ext = os.path.splitext(out_file)
-    new_file = f'{base}.mp3'
+        base, ext = os.path.splitext(out_file)
+        new_file = f'{base}.mp3'
 
-    convert_to_mp3(out_file, new_file)
+        convert_to_mp3(out_file, new_file)
 
-    os.remove(out_file)  # Remove o arquivo webm original se desejar economizar espaço
+        os.remove(out_file)  # Remove o arquivo webm original se desejar economizar espaço
+    except:
+        print(f"O vídeo {url} possui restrição de idade. Pulando para o próximo vídeo.")
+        return
+
 
 
 if __name__ == "__main__":
