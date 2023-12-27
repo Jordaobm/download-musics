@@ -2,7 +2,7 @@ import os
 import re
 
 def organize_music():
-    deleting_names = ['GTA V Radio [Channel X]', 'GTA V - Rebel Radio', 'GTA V Radio [FLyLo FM]', 'GTA V [Radio Mirror Park]', 'GTA V [Los Santos Rock Radio]', 'Rebel Radio', 'Flying Lotus']
+    deleting_names = ['GTA V Radio [Channel X]', 'GTA V - Rebel Radio', 'GTA V Radio [FLyLo FM]', 'GTA V [Radio Mirror Park]', 'GTA V [Los Santos Rock Radio]', 'Rebel Radio', 'Flying Lotus', 'GTA 5 - ', 'GTA 5', '- GTA 5 ', 'GTA_San_Andreas__KDST', 'GTA San Andreas - K-DST', 'Krose_Playlist.ATB - ', 'Krose_Playlist.', 'Krose_Playlist', 'GTA SA K-Rose - - ', 'K-Rose ', 'K-Rose', 'KRose']
 
     for root, dirs, files in os.walk('outputs'):
         # Ordenar os arquivos para garantir a ordem correta
